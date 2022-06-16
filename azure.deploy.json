@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.5.6.12127",
-      "templateHash": "4026801975126501866"
+      "templateHash": "16816126835438915294"
     }
   },
   "parameters": {
@@ -1222,7 +1222,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.5.6.12127",
-              "templateHash": "15321005516608988374"
+              "templateHash": "15089225345703636265"
             }
           },
           "parameters": {
@@ -1749,9 +1749,6 @@
                   },
                   "dataLocation": {
                     "value": "[parameters('acsDataLocation')]"
-                  },
-                  "location": {
-                    "value": "[parameters('location')]"
                   }
                 },
                 "template": {
@@ -1761,14 +1758,11 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.5.6.12127",
-                      "templateHash": "3125793750168036980"
+                      "templateHash": "2079935757513748936"
                     }
                   },
                   "parameters": {
                     "name": {
-                      "type": "string"
-                    },
-                    "location": {
                       "type": "string"
                     },
                     "tags": {
@@ -1784,7 +1778,7 @@
                       "type": "Microsoft.Communication/communicationServices",
                       "apiVersion": "2020-08-20",
                       "name": "[parameters('name')]",
-                      "location": "[parameters('location')]",
+                      "location": "global",
                       "tags": "[parameters('tags')]",
                       "properties": {
                         "dataLocation": "[parameters('dataLocation')]"
@@ -1821,7 +1815,7 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.5.6.12127",
-                      "templateHash": "14498060945075950545"
+                      "templateHash": "12233943340645515676"
                     }
                   },
                   "parameters": {
@@ -1867,6 +1861,7 @@
                       "properties": {
                         "msaAppType": "UserAssignedMSI",
                         "msaAppId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('uai-{0}', parameters('name')))).clientId]",
+                        "msaAppMSIResourceId": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('uai-{0}', parameters('name')))]",
                         "msaAppTenantId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', format('uai-{0}', parameters('name')))).tenantId]",
                         "displayName": "[parameters('displayName')]",
                         "endpoint": ""
